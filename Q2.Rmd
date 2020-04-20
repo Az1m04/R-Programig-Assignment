@@ -1,0 +1,57 @@
+---
+title: "Q2"
+author: "Md Azim Babu"
+date: "18/04/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+## 1.Cars Datasets
+```{r cars}
+summary(cars)
+```
+
+```{r cars}
+x<-cars$dist
+y<-cars$speed
+relation<-lm(y~x)
+a<-data.frame(x=140)
+result<-predict(relation,a)
+
+plot(y,x,main = "Regression ",
+abline(lm(x~y),col="blue"),cex = 1.3,pch = 16,xlab = "speed",ylab = "Distance")
+```
+
+## 2.airquality dataset Plots
+
+
+
+```{r airquality, echo=FALSE}
+Temperature<-airquality$Temp
+hist(Temperature, breaks = 4,col=rainbow(length(x)),main="with breaks 4")
+
+hist(Temperature, breaks = 20,col =rainbow(length(x)),main="with breaks 20")
+```
+
+## 3.Pie chart
+
+```{r echo=FALSE}
+data <- read.table("C:/Users/Azimcool.000/Downloads/Genderdata.txt",header=TRUE)
+mydata<-table(data$Gender)
+lbls<-paste(mydata,names(mydata),sep=" ")
+pie(mydata,lbls,main = "Ratio of Gender",col=c('blue','orange'))
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
